@@ -32,6 +32,8 @@ import org.spacehq.packetlib.Server;
 import org.spacehq.packetlib.Session;
 import org.spacehq.packetlib.crypt.AESEncryption;
 import org.spacehq.packetlib.crypt.PacketEncryption;
+import org.spacehq.packetlib.packet.DefaultPacketHeader;
+import org.spacehq.packetlib.packet.PacketHeader;
 import org.spacehq.packetlib.packet.PacketProtocol;
 
 import java.security.GeneralSecurityException;
@@ -41,11 +43,12 @@ import java.util.UUID;
 public class MinecraftProtocol extends PacketProtocol {
 	
 	private ProtocolMode mode = ProtocolMode.HANDSHAKE;
-	private AESEncryption encrypt = null;
+	private PacketHeader header = new DefaultPacketHeader();
+	private AESEncryption encrypt;
 	
-	private GameProfile profile = null;
+	private GameProfile profile;
 	private String accessToken = "";
-	private ClientListener clientListener = null;
+	private ClientListener clientListener;
 	
 	@SuppressWarnings("unused")
 	private MinecraftProtocol() {
@@ -91,7 +94,12 @@ public class MinecraftProtocol extends PacketProtocol {
 	public PacketEncryption getEncryption() {
 		return this.encrypt;
 	}
-	
+
+	@Override
+	public PacketHeader getPacketHeader() {
+		return this.header;
+	}
+
 	@Override
 	public void newClientSession(Client client, Session session) {
 		if(this.profile != null) {
