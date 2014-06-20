@@ -37,7 +37,7 @@ import org.spacehq.packetlib.tcp.TcpSessionFactory;
 import java.util.Arrays;
 
 public class Test {
-	
+
 	private static final boolean SPAWN_SERVER = true;
 	private static final boolean VERIFY_USERS = false;
 	private static final String HOST = "127.0.0.1";
