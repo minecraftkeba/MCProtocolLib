@@ -89,15 +89,25 @@ public class MinecraftProtocol extends PacketProtocol {
 		this.accessToken = auth.getAccessToken();
 		this.clientListener = new ClientListener();
 	}
-	
+
 	@Override
-	public PacketEncryption getEncryption() {
-		return this.encrypt;
+	public boolean needsPacketSizer() {
+		return true;
+	}
+
+	@Override
+	public boolean needsPacketEncryptor() {
+		return true;
 	}
 
 	@Override
 	public PacketHeader getPacketHeader() {
 		return this.header;
+	}
+
+	@Override
+	public PacketEncryption getEncryption() {
+		return this.encrypt;
 	}
 
 	@Override
