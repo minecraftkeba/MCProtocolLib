@@ -107,6 +107,8 @@ public class ServerPlayEffectPacket implements Packet {
 				return SoundEffect.POUND_METAL_DOOR;
 			case 1012:
 				return SoundEffect.BREAK_WOODEN_DOOR;
+			case 1013:
+				return SoundEffect.WITHER_SPAWN;
 			case 1014:
 				return SoundEffect.WITHER_SHOOT;
 			case 1015:
@@ -170,6 +172,8 @@ public class ServerPlayEffectPacket implements Packet {
 			return 1011;
 		} else if(effect == SoundEffect.BREAK_WOODEN_DOOR) {
 			return 1012;
+		} else if(effect == SoundEffect.WITHER_SPAWN) {
+			return 1013;
 		} else if(effect == SoundEffect.WITHER_SHOOT) {
 			return 1014;
 		} else if(effect == SoundEffect.BAT_TAKE_OFF) {
@@ -299,6 +303,7 @@ public class ServerPlayEffectPacket implements Packet {
 		POUND_WOODEN_DOOR,
 		POUND_METAL_DOOR,
 		BREAK_WOODEN_DOOR,
+		WITHER_SPAWN
 		WITHER_SHOOT,
 		BAT_TAKE_OFF,
 		INFECT_VILLAGER,
