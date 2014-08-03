@@ -303,7 +303,7 @@ public class ServerPlayEffectPacket implements Packet {
 		POUND_WOODEN_DOOR,
 		POUND_METAL_DOOR,
 		BREAK_WOODEN_DOOR,
-		WITHER_SPAWN
+		WITHER_SPAWN,
 		WITHER_SHOOT,
 		BAT_TAKE_OFF,
 		INFECT_VILLAGER,
