@@ -53,26 +53,25 @@ public class MinecraftProtocol extends PacketProtocol {
 	@SuppressWarnings("unused")
 	private MinecraftProtocol() {
 	}
-	
+
 	public MinecraftProtocol(ProtocolMode mode) {
 		if(mode != ProtocolMode.LOGIN && mode != ProtocolMode.STATUS) {
 			throw new IllegalArgumentException("Only login and status modes are permitted.");
 		}
-		
+
 		this.mode = mode;
 		if(mode == ProtocolMode.LOGIN) {
 			this.profile = new GameProfile((UUID) null, "Player");
 		}
-		
+
 		this.clientListener = new ClientListener();
 	}
-	
+
 	public MinecraftProtocol(String username) {
 		this(ProtocolMode.LOGIN);
 		this.profile = new GameProfile((UUID) null, username);
-		this.clientListener = new ClientListener();
 	}
-	
+
 	public MinecraftProtocol(String username, String using, boolean token) throws AuthenticationException {
 		this(ProtocolMode.LOGIN);
 		String clientToken = UUID.randomUUID().toString();
@@ -83,11 +82,25 @@ public class MinecraftProtocol extends PacketProtocol {
 		} else {
 			auth.setPassword(using);
 		}
-		
+
 		auth.login();
 		this.profile = auth.getSelectedProfile();
 		this.accessToken = auth.getAccessToken();
-		this.clientListener = new ClientListener();
+	}
+
+	public MinecraftProtocol(GameProfile profile, String accessToken) {
+		this(ProtocolMode.LOGIN);
+		this.profile = profile;
+		this.accessToken = accessToken;
+
+	}
+
+	public GameProfile getProfile() {
+		return this.profile;
+	}
+
+	public String getAccessToken() {
+		return this.accessToken;
 	}
 
 	@Override
