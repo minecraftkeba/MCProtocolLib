@@ -1,15 +1,15 @@
 package org.spacehq.mc.protocol.packet.ingame.server.entity;
 
-import java.io.IOException;
-
 import org.spacehq.packetlib.io.NetInput;
 import org.spacehq.packetlib.io.NetOutput;
 import org.spacehq.packetlib.packet.Packet;
 
+import java.io.IOException;
+
 public class ServerEntityHeadLookPacket implements Packet {
 
-	protected int entityId;
-	protected float headYaw;
+	private int entityId;
+	private float headYaw;
 
 	@SuppressWarnings("unused")
 	private ServerEntityHeadLookPacket() {
