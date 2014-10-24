@@ -1,12 +1,12 @@
 package org.spacehq.mc.protocol.data.message;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Message implements Cloneable {
 
@@ -54,13 +54,13 @@ public abstract class Message implements Cloneable {
 
 	public Message removeExtra(Message message) {
 		this.extra.remove(message);
-		message.getStyle().setParent(new MessageStyle());
+		message.getStyle().setParent(null);
 		return this;
 	}
 	
 	public Message clearExtra() {
 		for(Message msg : this.extra) {
-			msg.getStyle().setParent(new MessageStyle());
+			msg.getStyle().setParent(null);
 		}
 		
 		this.extra.clear();
