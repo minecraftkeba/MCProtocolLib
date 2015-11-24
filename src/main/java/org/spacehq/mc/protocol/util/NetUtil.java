@@ -207,7 +207,7 @@ public class NetUtil {
 
             if(pass == 0) {
                 // If we have more data than blocks and blocklight combined, there must be skylight data as well.
-                if(data.getData().length >= expected) {
+                if(data.getData().length > expected) {
                     sky = checkForSky;
                 }
             }
