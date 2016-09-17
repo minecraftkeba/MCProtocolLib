@@ -216,7 +216,11 @@ public class NetUtil {
         byte biomeData[] = null;
         if(data.isFullChunk()) {
             biomeData = new byte[256];
-            System.arraycopy(data.getData(), pos, biomeData, 0, biomeData.length);
+		    try {
+			    System.arraycopy(data.getData(), pos, biomeData, 0, biomeData.length);
+		    } catch(ArrayIndexOutOfBoundsException e) {
+			    System.out.println("Error loading chuncks.");
+		    }
             pos += biomeData.length;
         }
 
